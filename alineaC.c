@@ -5,12 +5,13 @@
 
 
 
+// Feito por Pedro Meneses
 
 int main(){
 
     /**
-     * This function should append the content of the source file to the new file
-     * If any of the files fail to exist, print an error to the console and exit the program
+     * Esta alinea deverá criar um ficheiro com o nome passado como parametro na função open e escrever no ficheiro
+     * Se algum ficheiro nao existir , imprimir erro
      */
 
     int fd = open("./ficheiro.txt", O_RDONLY); // Designar o nosso fd

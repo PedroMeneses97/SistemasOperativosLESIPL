@@ -5,11 +5,12 @@
 
 
 
-
+// Feito por Pedro Meneses
 int main(){
 
    /**
-    * @brief Delete file with the given name, if the file doesn't exist print an error message
+    * @brief Apagar um ficheiro com o nome passado como parametro na função open
+    * caso o ficheiro nao exista, imprimir no ecrã o erro dado
     */
 
     int fd = open("./filetodelete.txt", O_RDONLY); // Designar o nosso fd

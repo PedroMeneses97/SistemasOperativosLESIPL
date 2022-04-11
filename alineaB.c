@@ -3,16 +3,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+// Feito por Pedro Meneses
 int main(){
 
 
  
  /**
   * @brief Copy File
-  * This function should create a new file named "ficheiro.copia", which content is a copy of all the content present
-  * in the file passed as parameter in the command, with the name ficheiro.
-  * 
+  * Copiar um ficheiro original para um ficheiro destino
   */
     int fd = open("./ficheiro.txt", O_RDONLY); // Designar o nosso fd
     if (fd == -1) {  // Caso dê erro
