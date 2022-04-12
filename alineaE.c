@@ -13,8 +13,6 @@ int main(){
     * caso o ficheiro nao exista, imprimir no ecrã o erro dado
     */
 
-    int fd = open("./filetodelete.txt", O_RDONLY); // Designar o nosso fd
-
     if(remove("./filetodelete.txt") == 0){
         printf("Ficheiro apagado com sucesso");
     }
