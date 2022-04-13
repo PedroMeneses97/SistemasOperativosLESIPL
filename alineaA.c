@@ -3,7 +3,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Feito por Pedro Meneses
+ /**
+   * @brief mostra ficheiro – Este comando deve apresentar no ecrã (todo) o
+   * conteúdo do ficheiro indicado como parâmetro. Caso o ficheiro não exista, o comando 
+   * deve avisar o utilizador que o ficheiro não existe;
+   * Autor: Pedro Meneses
+   */
 int main(){
 
     int fd;
