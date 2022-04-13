@@ -21,12 +21,8 @@ int main(){
         char c;
         while (read(fd, &c, 1) > 0) {
             printf("%c", c);
-        }
-        
+        }   
     }
-
-
-
-
+    
     return 0;
 }
