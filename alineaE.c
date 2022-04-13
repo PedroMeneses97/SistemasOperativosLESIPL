@@ -3,24 +3,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+ /**
+   * @brief apaga ficheiro – Este comando deve apagar o ficheiro com o nome indicado.
+   * No caso de o ficheiro indicado não existir, e apenas, deve ser apresentado
+   * um aviso ao utilizador;
+   * Autor: Pedro Meneses
+   * https://linux.die.net/man/2/unlink
+   */
 
-
-// Feito por Pedro Meneses
 int main(){
 
-   /**
-    * @brief Apagar um ficheiro com o nome passado como parametro na função open
-    * caso o ficheiro nao exista, imprimir no ecrã o erro dado
-    */
+    int fd;
 
-    if(remove("./filetodelete.txt") == 0){
-        printf("Ficheiro apagado com sucesso");
-    }
-    else{
+    fd = open("./ficheiroToDelete.txt", O_RDONLY); // Caso o nosso fd seja diferente de -1, significa que o ficheiro existe
+    if (fd == -1) {  // Caso dê erro ao abrir ficheiro, devolver erro ao utilizador
         perror("erro, o ficheiro não existe ou o caminho é inválido");
         exit(1);
     }
- 
+    else{
+        close(fd);
+        unlink("./ficheiroToDelete.txt"); // Apaga o ficheiro
+    }
 
     return 0;
 }
