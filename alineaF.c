@@ -24,8 +24,15 @@ int main()
 
     // Designar o nosso user dono
     struct passwd *pw = getpwuid(info.st_uid);
+    // Data de Modicação
     time_t t = info.st_mtime;
     struct tm *tm = localtime(&t);
+    // Data de leitura
+    time_t at = info.st_atime;
+    struct tm *atm = localtime(&at);
+    // Data de criação
+    time_t ct = info.st_ctime;
+    struct tm *ctm = localtime(&ct);
 
     printf("%s\n", "ficheiro.txt");
     printf("\tTipo: ");
@@ -67,7 +74,7 @@ int main()
     printf("\tNúmero de inodes: %llu\n", info.st_ino);
     printf("\tUtilizador: %s\n", pw->pw_name);
     printf("\tData de modificação: %d/%d/%d %d:%d:%d\n", tm->tm_mday, tm->tm_mon + 1, tm->tm_year + 1900, tm->tm_hour, tm->tm_min, tm->tm_sec);
-    printf("\tData de criação: %d/%d/%d %d:%d:%d\n", tm->tm_mday, tm->tm_mon + 1, tm->tm_year + 1900, tm->tm_hour, tm->tm_min, tm->tm_sec);
-    printf("\tData de leitura: %d/%d/%d %d:%d:%d\n", tm->tm_mday, tm->tm_mon + 1, tm->tm_year + 1900, tm->tm_hour, tm->tm_min, tm->tm_sec);
+    printf("\tData de criação: %d/%d/%d %d:%d:%d\n", ctm->tm_mday, ctm->tm_mon + 1, ctm->tm_year + 1900, ctm->tm_hour, ctm->tm_min, ctm->tm_sec);
+    printf("\tData de leitura: %d/%d/%d %d:%d:%d\n", atm->tm_mday, atm->tm_mon + 1, atm->tm_year + 1900, atm->tm_hour, atm->tm_min, atm->tm_sec);
     return 0;
 }
