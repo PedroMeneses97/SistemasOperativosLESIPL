@@ -11,20 +11,23 @@
    * https://linux.die.net/man/2/unlink
    */
 
-int main(){
-
+int main(int argc, char *argv[]){
     int fd;
 
-    fd = open("./ficheiroToDelete.txt", O_RDONLY); // Caso o nosso fd seja diferente de -1, significa que o ficheiro existe
-    if (fd == -1) {  // Caso dê erro ao abrir ficheiro, devolver erro ao utilizador
-        perror("erro, o ficheiro não existe ou o caminho é inválido");
+    if(argc != 2){
+        perror("Erro: Argumentos inválidos ");
+        exit(1);
+    }
+
+    fd = open(argv[1], O_RDONLY);
+    if(fd == -1){
+        perror("Erro: Erro ao abrir o ficheiro ");
         exit(1);
     }
     else{
         close(fd);
-        unlink("./ficheiroToDelete.txt"); // Apaga o ficheiro
+        unlink(argv[1]);
     }
 
     return 0;
 }
-

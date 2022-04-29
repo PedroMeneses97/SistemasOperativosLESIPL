@@ -11,44 +11,38 @@
    * Autor: Pedro Meneses
    */
 
-int main()
-{
-  // Instanciar os filedescriptors, um char para depois imprimirmos do ficheiro, e os dois ficheiros.
-  int fd1, fd2;
-  char c;
-  char *nome_ficheiro = "ficheiro.txt";
-  char *nome_ficheiro_copia = "ficheiro.copia.txt";
+  int main(int argc, char *argv[]){
+    int fd, fd2;
+    char buffer[100];
+    int n;
 
-  fd1 = open(nome_ficheiro, O_RDONLY); // Abrir o ficheiro para leitura
-
-  if (fd1 == -1)
-  {
-    perror("Ficheiro nao existe\n"); // Caso dê erro ao abrir ficheiro, devolver erro ao utilizador
-    exit(1);
-  }
-
-  else
-  {
-    fd2 = open(nome_ficheiro_copia, O_WRONLY | O_CREAT, 0644); // Abrir o ficheiro para escrita , criar se não existir , com permissões de leitura e escrita
-    
-    if (fd2 == -1)
-    {
-      perror("Erro ao criar ficheiro\n"); // Caso dê erro ao abrir ficheiro, devolver erro ao utilizador
-      return -1;
+    if(argc != 3){
+      // write(2,"Erro: Argumentos inválidos\n",29);
+      perror("Erro: Argumentos inválidos ");
+      exit(1);
     }
 
-    else
-    {
-
-      while (read(fd1, &c, 1) > 0) // le o fd1 e escreve no fd2
-      {
-        write(fd2, &c, 1);
-      }
-
+    fd = open(argv[1], O_RDONLY);
+    if(fd == -1){
+      // write(2,"Erro: Ficheiro não existe\n",28);
+      perror("Erro: Erro ao abrir o ficheiro ");
+      exit(1);
     }
-  }
-  close(fd1);
-  close(fd2);
 
-  return 0;
-}
+    fd2 = open(argv[2], O_WRONLY | O_CREAT, 0644);
+    if(fd2 == -1){
+      // write(2,"Erro: Ficheiro não existe\n",28);
+      perror("Erro: erro ao criar o ficheiro ");
+      exit(1);
+    }
+
+    while((n = read(fd, buffer, 100)) > 0){
+      write(fd2, buffer, n);
+    }
+
+    close(fd);
+    close(fd2);
+    return 0;
+  }
+
+  

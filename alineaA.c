@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h> 
 
  /**
    * @brief mostra ficheiro – Este comando deve apresentar no ecrã (todo) o
@@ -9,23 +10,31 @@
    * deve avisar o utilizador que o ficheiro não existe;
    * Autor: Pedro Meneses
    */
-int main(){
 
-    int fd;
-    char c;
-    char *nome_ficheiro = "ficheiro.txt";
 
-    fd = open(nome_ficheiro, O_RDONLY); // Designar o nosso fd    
-    if (fd == -1) {  // Se o FD vier com -1 é porque o caminho ou o ficheiro está errado/não existe
-        perror("erro, o ficheiro não existe ou o caminho é inválido");
-        exit(1);
-    }
-    else{
-        // Imprime todos os caracteres do ficheiro
-        while (read(fd, &c, 1) > 0) {   // ssize_t read(int fildes, void *buf, size_t nbyte);
-            printf("%c", c);
-        }
-        close(fd);
-    }
-    return 0;
+int main(int argc, char *argv[]){
+  int fd;
+  char buffer[100];
+  int n;
+
+  if(argc != 2){
+    // write(2,"Erro: Argumentos inválidos\n",29);
+    perror("Erro: Argumentos inválidos ");
+    exit(1);
+  }
+  
+  fd = open(argv[1], O_RDONLY);
+  if(fd == -1){
+    // write(2,"Erro: Ficheiro não existe\n",28);
+    perror("Erro: Argumentos inválidos");
+    exit(1);
+  }
+
+  while((n = read(fd, buffer, 100)) > 0){
+    write(1, buffer, n);
+  }
+  
+  close(fd);
+  return 0;
 }
+
