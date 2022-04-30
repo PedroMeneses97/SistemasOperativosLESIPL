@@ -46,8 +46,7 @@ int main(int argc, char *argv[])
 
         // Imprime o valor do contador
         int size = 22 + count;
-        write(STDOUT_FILENO, ("O ficheiro tem %d linhas", count), size);
-        // printf("O ficheiro tem %d linhas", count);
+        printf("O ficheiro tem %d linhas", count);
 
         // Fecha o fd
         close(fd);
