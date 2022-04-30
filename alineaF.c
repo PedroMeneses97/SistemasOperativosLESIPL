@@ -42,9 +42,11 @@ int main(int argc, char *argv[])
     // Data de Modicação
     time_t t = info.st_mtime;
     struct tm *tm = localtime(&t);
+
     // Data de leitura
     time_t at = info.st_atime;
     struct tm *atm = localtime(&at);
+
     // Data de criação
     time_t ct = info.st_ctime;
     struct tm *ctm = localtime(&ct);

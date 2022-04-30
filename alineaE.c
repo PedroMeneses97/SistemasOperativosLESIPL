@@ -25,8 +25,8 @@ int main(int argc, char *argv[]){
         exit(1);
     }
     else{
-        close(fd);
         unlink(argv[1]);
+        close(fd);
     }
 
     return 0;
