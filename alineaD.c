@@ -12,7 +12,6 @@
 int main(int argc, char *argv[])
 {
     int fd;
-    char buffer[100];
 
     if (argc != 2)
     {

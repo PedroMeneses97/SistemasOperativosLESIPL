@@ -17,7 +17,6 @@
  */
 int main(int argc, char *argv[])
 {
-    char buffer[100];
     int n;
 
     if (argc != 2)
